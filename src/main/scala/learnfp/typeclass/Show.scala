@@ -1,4 +1,5 @@
 package learnfp.typeclass
+import scala.reflect.ClassTag
 
 trait Show[A] {
   def show(x:A):String
@@ -12,11 +13,11 @@ object Printer {
 
 object ShowInstances {
   implicit val intInstance:Show[Int] = new Show[Int] {
-    override def show(x: Int): String = ???
+    override def show(x: Int): String = x.toString
   }
 
   implicit val doubleInstance:Show[Double] = new Show[Double] {
-    override def show(x: Double): String = ???
+    override def show(x: Double): String = x.toString
   }
 
   implicit def listInstance[T](implicit xShow:Show[T]):Show[List[T]] = new Show[List[T]] {
